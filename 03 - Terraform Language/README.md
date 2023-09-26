@@ -122,25 +122,25 @@ Meta-arguments are special configuration options that apply to resource blocks, 
 
 **depends_on**
 
-The `depends_on` meta-argument allows you to specify explicit dependencies between resources. It ensures that one resource is created or modified only after another resource is successfully created.
+The [depends_on](https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on) meta-argument allows you to specify explicit dependencies between resources. It ensures that one resource is created or modified only after another resource is successfully created.
 
 - See [depends_on.tf](./Meta%20Arguments/depends_on.tf)
 
 **count**
 
-The `count` meta-argument allows you to create multiple instances of a resource based on a numeric value or a list. It's useful for dynamically generating resources.
+The [count](https://developer.hashicorp.com/terraform/language/meta-arguments/count) meta-argument allows you to create multiple instances of a resource based on a numeric value or a list. It's useful for dynamically generating resources.
 
 - See [count.tf](./Meta%20Arguments/count.tf)
 
 **for_each**
 
-The `for_each` meta-argument is similar to `count` but allows you to create multiple instances of a resource based on a map or a set of strings. It's useful for more complex resource configurations.
+The [for_each](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each) meta-argument is similar to `count` but allows you to create multiple instances of a resource based on a map or a set of strings. It's useful for more complex resource configurations.
 
 - See [for_each.tf](./Meta%20Arguments/for_each.tf)
 
 **lifecycle**
 
-The `lifecycle` meta-argument provides control over resource behavior, including creating, updating, and destroying resources. It can be used for advanced resource management.
+The [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) meta-argument provides control over resource behavior, including creating, updating, and destroying resources. It can be used for advanced resource management.
 
 - See [lifecycle.tf](./Meta%20Arguments/lifecycle.tf)
 
@@ -150,25 +150,27 @@ Provisioners are components that allow you to perform actions on resources after
 
 **file**
 
-This type copies files or directories from the local machine to the resource after its creation. It's useful for tasks like uploading configuration files.
+The [file provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/file) copies files or directories from the local machine to the resource after its creation. It's useful for tasks like uploading configuration files.
+
+- See [file.tf](./Provisioners/file.tf)
 
 **remote-exec**
 
-With this provisioner, you can execute commands on the resource itself after it's created. It's often used for tasks like software installation or configuration on the remote machine.
+With the [remote-exec provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec), you can execute commands on the resource itself after it's created. It's often used for tasks like software installation or configuration on the remote machine.
+
+- See [remote-exec.tf](./Provisioners/remote-exec.tf)
 
 **local-exec**
 
-This provisioner runs commands on the machine where Terraform is executed. It's typically used for tasks that don't involve the managed resource directly but may be required as part of the provisioning process.
+The [local-exec provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec) runs commands on the machine where Terraform is executed. It's typically used for tasks that don't involve the managed resource directly but may be required as part of the provisioning process.
+
+- See [local-exec.tf](./Provisioners/local-exec.tf)
 
 **terraform_data (formerly null_resource)**
 
-The null resource is a special type of resource that doesn't correspond to any real infrastructure component. It's used as a trigger to run provisioners when a specific condition is met, even if there's no actual resource to apply them to.
+The [terraform_data provisioner](https://developer.hashicorp.com/terraform/language/resources/terraform-data) is a special type of resource that doesn't correspond to any real infrastructure component. It's used as a trigger to run provisioners when a specific condition is met, even if there's no actual resource to apply them to.
 
-## Data Sources
-
-Data Sources in Terraform allow you to query external info or existing resources for your configuration.
-
-[TODO]
+- See [terraform_data.tf](./Provisioners/terraform_data.tf)
 
 ## Expressions
 
@@ -184,9 +186,43 @@ Dynamic expressions in Terraform allow you to generate values or configurations 
 
 ### Dynamic Blocks
 
-Dynamic blocks provide a way to conditionally create blocks within resource or module definitions, allowing you to generate complex configurations dynamically.
+[Dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks) in Terraform that enable you to dynamically generate and customize blocks of configuration within your resource or module definitions. Instead of having a fixed number of statically defined blocks, you can use dynamic blocks to create blocks conditionally or iteratively. You can add dynamic blocks to your resource or module using the `dynamic` keyword:
 
-[TODO]
+```t
+dynamic "block_name" {
+  for_each = var.some_map_variable
+  content {
+    key   = block_name.key
+    value = block_name.value
+  }
+}
+
+```
+
+In this example, the `for_each` argument iterates over a map variable `var.some_map_variable`, and for each entry in the map, it generates a dynamic block with custom configurations.
+
+- See [dynamic.tf](./Functions/dynamic.tf)
+
+## Data Sources
+
+[Data Sources](https://developer.hashicorp.com/terraform/language/data-sources) in Terraform allow you to query and retrieve information from external sources or existing resources, such as configuration values or resource attributes, to be used within your Terraform configurations. They enable you to incorporate real-world data or properties of pre-existing infrastructure into your Terraform code. Data sources are declared using a `data` block:
+
+```t
+data "azurerm_resources" "dev_web_data" {
+  resource_group_name = "rg-terraform-data"
+  required_tags = {
+    environment = "Dev"
+    role        = "Webserver"
+  }
+}
+```
+
+The example above queries Azure and retrieves resources that meet specific tag criteria:
+- The data source, `azurerm_resources` (identified as `dev_web_data`), contacts Azure to search for resources within the "rg-terraform-data" resource group.
+- It filters the resources based on the specified tags: "environment" must be "Dev," and "role" must be "Webserver."
+- The data source returns a list of all Azure resources that match the tag criteria.
+
+See [data.tf](./Data%20Sources/data.tf)
 
 ---
 
