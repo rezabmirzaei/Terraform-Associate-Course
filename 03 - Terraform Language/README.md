@@ -48,7 +48,7 @@ Resources in Terraform represent infrastructure components. We had a brief look 
 # Resource block defines infrastructure resource to provision
 resource "resource_type" "resource_identifier" {
   # Configuration settings for the resource to provision
-  key     = "value"
+  key = "value"
 }
 ```
 
@@ -79,7 +79,7 @@ The variable can be referenced in your configuration using the `var` keyword:
 ```t
 resource "azurerm_virtual_network" "vnet_example" {
   # ... Omitted
-  location            = var.location
+  location = var.location
 }
 ```
 
@@ -112,7 +112,7 @@ You can use these local values in your resources or other expressions within you
 ```t
 resource "azurerm_virtual_network" "vnet_example" {
   # ... Omitted
-  address_space       = [local.address_space]
+  address_space = [local.address_space]
 }
 ```
 
