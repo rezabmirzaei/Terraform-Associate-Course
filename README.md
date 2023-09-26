@@ -9,7 +9,7 @@ To gain full advantage of this course, basic knowledge of and access to Azure is
 
 Installation and setup of Terraform, and connection to Azure will be covered in the first lesson [Terraform Basics](./01%20-%20Terraform%20Basics/).
 
-# Concepts of Infrastructure as Code (IaC):
+# Concepts of Infrastructure as Code (IaC)
 
 **Infrastructure as Code (IaC)** is the practice of managing and provisioning infrastructure resources, such as servers, networks, and databases, using code and automation scripts. Instead of configuring and managing infrastructure manually, IaC allows engineers to define their infrastructure requirements in code, which can be versioned, tested, and automated, resulting in more efficient, consistent, and scalable infrastructure operations. These concepts can be summarized as:
 
@@ -21,7 +21,7 @@ Installation and setup of Terraform, and connection to Azure will be covered in 
 
 * **Immutable Infrastructure:** IaC promotes the concept of immutable infrastructure, where changes are made by creating entirely new instances rather than modifying existing ones. This enhances reliability and reproducibility.
 
-## Benefits of Infrastructure as Code:
+## Benefits of Infrastructure as Code
 
 * **Scalability:** IaC enables the rapid scaling up or down of infrastructure resources to meet changing demands, reducing manual effort and potential errors.
 
@@ -33,7 +33,7 @@ Installation and setup of Terraform, and connection to Azure will be covered in 
 
 * **Collaboration:** Teams can collaborate effectively on infrastructure code using version control, improving communication and knowledge sharing.
 
-## Challenges of Implementing Infrastructure as Code:
+## Challenges of Implementing Infrastructure as Code
 
 * **Learning Curve:** Implementing IaC may require a steep learning curve, especially for teams new to automation and coding practices. Choosing the right IaC tools and platforms can also be challenging, as there are multiple options available, each with its own strengths and weaknesses.
 
