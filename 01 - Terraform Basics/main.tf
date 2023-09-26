@@ -9,7 +9,7 @@ terraform {
     }
   }
 
-  # This sets the minimum required Terraform version to 1.1.0 for this configuration.
+  # This sets the minimum required Terraform version to 1.1.0 for this configuration
   required_version = ">= 1.5.6"
 }
 
@@ -23,6 +23,6 @@ provider "azurerm" {
 # This block defines an Azure resource of type "azurerm_resource_group" with the
 # name "rg-tf-basics." It specifies the name and location for the Azure resource group.
 resource "azurerm_resource_group" "rg_basics" {
-  name     = "rg-terraform-basics" # Name of the Azure resource group.
-  location = "Norway East"         # Location or region where the resource group will be created.
+  name     = "rg-terraform-basics" # Name of the Azure resource group
+  location = "Norway East"         # Location or region where the resource group will be created
 }

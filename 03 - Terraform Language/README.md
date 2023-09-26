@@ -189,17 +189,16 @@ Dynamic expressions in Terraform allow you to generate values or configurations 
 [Dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks) in Terraform that enable you to dynamically generate and customize blocks of configuration within your resource or module definitions. Instead of having a fixed number of statically defined blocks, you can use dynamic blocks to create blocks conditionally or iteratively. You can add dynamic blocks to your resource or module using the `dynamic` keyword:
 
 ```t
-dynamic "block_name" {
-  for_each = var.some_map_variable
+dynamic "subnet" {
+  for_each = var.subnets
   content {
-    key   = block_name.key
-    value = block_name.value
+    name           = subnet.key
+    address_prefix = subnet.value
   }
 }
-
 ```
 
-In this example, the `for_each` argument iterates over a map variable `var.some_map_variable`, and for each entry in the map, it generates a dynamic block with custom configurations.
+In this example, the `for_each` argument iterates over a map variable `var.subnets`, and for each entry in the map, it generates a dynamic block with custom configurations (setting the subnet "name" and "address_prefix").
 
 - See [dynamic.tf](./Functions/dynamic.tf)
 
@@ -217,12 +216,11 @@ data "azurerm_resources" "dev_web_data" {
 }
 ```
 
-The example above queries Azure and retrieves resources that meet specific tag criteria:
-- The data source, `azurerm_resources` (identified as `dev_web_data`), contacts Azure to search for resources within the "rg-terraform-data" resource group.
-- It filters the resources based on the specified tags: "environment" must be "Dev," and "role" must be "Webserver."
-- The data source returns a list of all Azure resources that match the tag criteria.
+The example above queries Azure and retrieves resources that meet the specific tag criteria. The data source, `azurerm_resources` (identified as `dev_web_data`), contacts Azure to search for resources within the "rg-terraform-data" resource group, filters the resources based on the specified tags, and returns a list of all Azure resources that match the tag criteria.
 
-See [data.tf](./Data%20Sources/data.tf)
+It's important to note that different data sources may have different required and optional parameters. To use data sources effectively, consult the [Terraform documentation](https://developer.hashicorp.com/terraform/language/data-sources) for each specific data source to understand its configuration options and parameters.
+
+- See [data.tf](./Data%20Sources/data.tf)
 
 ---
 

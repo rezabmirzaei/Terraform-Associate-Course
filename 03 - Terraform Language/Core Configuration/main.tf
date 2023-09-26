@@ -8,24 +8,24 @@ terraform {
   required_version = ">= 1.5.6"
 }
 
-# The default provider configuration; resources that begin with `azurerm_` will use it as the default.
+# The default provider configuration; resources that begin with `azurerm_` will use it as the default
 provider "azurerm" {
   features {}
 }
 
-# Provider configuration for the east region.
+# Provider configuration for the east region
 provider "azurerm" {
   alias = "east"
   features {
-    # In Azure, the default behavior is to retain the OS disk when deleting a virtual machine.
-    # Enabling "delete_os_disk_on_deletion" ensures the OS disk is also deleted to avoid leaving residual resources.
+    # In Azure, the default behavior is to retain the OS disk when deleting a virtual machine
+    # Enabling "delete_os_disk_on_deletion" ensures the OS disk is also deleted to avoid leaving residual resources
     virtual_machine {
       delete_os_disk_on_deletion = true
     }
   }
 }
 
-# Provider configuration for the west region.
+# Provider configuration for the west region
 provider "azurerm" {
   alias = "west"
   features {
