@@ -13,7 +13,6 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg_meta" {
-  name     = "rg_meta"
+  name     = "rg-terraform-meta"
   location = "Norway East"
-
 }

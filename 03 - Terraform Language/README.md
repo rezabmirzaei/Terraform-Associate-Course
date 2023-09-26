@@ -40,11 +40,81 @@ The version constraint format typically includes operators like `>=`, `<=`, `~>`
 
 ## Terraform Resources
 
-### Resource Syntax and Behavior
+### Resource Syntax
 
-Resources in Terraform represent infrastructure components. Let's have a look at the syntax and behavior of resource blocks, including their required and optional arguments.
+Resources in Terraform represent infrastructure components. We had a brief look in chapter [01 Terraform Basics](./../01%20-%20Terraform%20Basics/) at how resources are defined, using the `resource` block:
 
-[TODO]
+```t
+# Resource block defines infrastructure resource to provision
+resource "resource_type" "resource_identifier" {
+  # Configuration settings for the resource to provision
+  key     = "value"
+}
+```
+
+- `resource`: This keyword indicates that you are defining an infrastructure resource.
+- `"resource_type"`: This is the type of the resource you are defining. You would replace "resource_type" with the actual type of resource you want to create, such as "aws_instance" or "azurerm_virtual_machine."
+- `"resource_identifier"`: This is a unique name or identifier for this specific resource block. It helps you refer to this resource block elsewhere in your configuration.
+- `key = "value"`: Within the resource block, you define configuration settings for the specific resource. In this example, `key` is a placeholder for an actual configuration setting, and `"value"` is a placeholder for the value you want to assign to that setting. You would replace `key` and `"value"` with actual configuration settings and values relevant to the resource type you are defining.
+
+We've already created Azure Resource Groups ("azurerm_resource_group") using the definition explained above, as seen in [main.tf](../01%20-%20Terraform%20Basics/main.tf), and we'll cover other examples of resources going forward in the course.
+
+### Variables (Revisited)
+
+We had a look at variables in chapter [02 - Terraform Configuration](./../02%20-%20Terraform%20Configuration/). Before moving ahead, here is a quick recap and an introduction to "Local Values" (`locals`). A full example can be found in the following [main.tf](./Variables%20Revisited/main.tf).
+
+**Input Variables**
+
+[Input variables](https://developer.hashicorp.com/terraform/language/values/variables) allow you to parameterize your Terraform configurations. They provide flexibility and can be set externally or within configuration files. To declare a variable, use the `variable` block in your Terraform code:
+
+```t
+variable "location" {
+  type    = string
+  default = "East US"
+}
+```
+
+The variable can be referenced in your configuration using the `var` keyword:
+
+```t
+resource "azurerm_virtual_network" "vnet_example" {
+  # ... Omitted
+  location            = var.location
+}
+```
+
+See chapter [02 - Terraform Configuration](./../02%20-%20Terraform%20Configuration#demo-configuration-files-and-variables) on how to set and pass values for input variables.
+
+**Output Values**
+
+[Output values](https://developer.hashicorp.com/terraform/language/values/outputs) allow you to expose specific information about your infrastructure for reference or use in other parts of your configuration. To declare an output value, use the `output` block in your Terraform code:
+
+```t
+output "vnet_id" {
+  value = azurerm_virtual_network.vnet_example.id
+}
+```
+
+You can then retrieve this output value using the `terraform output` command, after a successful `terraform apply`. It's important to note that certain values, like the `id` in this example, are not known until the associated resource is actually created.
+
+**Local Values**
+
+[Local values](https://developer.hashicorp.com/terraform/language/values/locals) are used to compute intermediate values within a Terraform configuration. They enhance maintainability by avoiding redundancy in expressions. To declare an local values, use the `locals` block in your Terraform code:
+
+```t
+locals {
+  address_space = "10.0.0.0/16"
+}
+```
+
+You can use these local values in your resources or other expressions within your configuration using the `local` keyword:
+
+```t
+resource "azurerm_virtual_network" "vnet_example" {
+  # ... Omitted
+  address_space       = [local.address_space]
+}
+```
 
 ### Meta-Arguments
 
@@ -117,22 +187,6 @@ Dynamic expressions in Terraform allow you to generate values or configurations 
 Dynamic blocks provide a way to conditionally create blocks within resource or module definitions, allowing you to generate complex configurations dynamically.
 
 [TODO]
-
-## Variables
-
-[TODO]
-
-### Input Variables
-
-Input variables allow you to parameterize your Terraform configurations. They provide flexibility and can be set externally or within configuration files.
-
-### Output Values
-
-Output values allow you to expose specific information about your infrastructure for reference or use in other parts of your configuration.
-
-### Local Values
-
-Local values are used to compute intermediate values within a Terraform configuration. They enhance maintainability by avoiding redundancy in expressions.
 
 ---
 

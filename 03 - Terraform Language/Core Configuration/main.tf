@@ -37,7 +37,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg_east" {
   provider = azurerm.east
-  name     = "rg_east"
+  name     = "rg-terraform-east"
   location = "East US"
 
 }
