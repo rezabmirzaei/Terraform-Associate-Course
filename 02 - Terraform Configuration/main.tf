@@ -19,7 +19,7 @@ provider "azurerm" {
 # 2. By providing values in a "terraform.tfvars" file.
 # 3. By creating custom files and using the "-var-file" flag when running Terraform commands.
 # 4. By passing values using the "-var" flag when running Terraform commands.
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "rg_config" {
   # Using "var." to refernce a variable named "resource_group_name."
   name = var.resource_group_name
   # Using "var." to refernce a variable named "location."

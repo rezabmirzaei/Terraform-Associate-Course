@@ -17,7 +17,7 @@ terraform {
 # ... Omitted
 
 # Resource block defines infrastructure resource to provision
-resource "azurerm_resource_group" "rg-tf-basics" {
+resource "azurerm_resource_group" "rg_basics" {
   # Configuration settings for the resource to provision
   name     = "rg-terraform-basics"
   location = "Norway East"
