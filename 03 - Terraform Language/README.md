@@ -174,15 +174,29 @@ The [terraform_data provisioner](https://developer.hashicorp.com/terraform/langu
 
 ## Expressions
 
-[TODO]
+In Terraform, [expressions](https://developer.hashicorp.com/terraform/language/expressions) serve as a way to reference or calculate values and perform operations in your configuration files. We've already encountered several of these expressions, like [types and values](https://developer.hashicorp.com/terraform/language/expressions/types) (for example, when defining input variables) and setting [version constraints](https://developer.hashicorp.com/terraform/language/expressions/version-constraints). Now, let's explore other essential Terraform expressions.
 
-### Functions
+### For Expression
 
-Terraform offers built-in functions for manipulating data within your configurations. These functions enable various operations and transformations on values.
+A [for expression](https://developer.hashicorp.com/terraform/language/expressions/for) is used to create lists or maps by iterating over elements of an existing list, set, or map and applying a transformation to each element. This allows you to generate new lists or maps based on the values of an existing collection.
 
-### Dynamic Expressions
+- See [for_and_splat.tf](./Expressions/for_and_splat.tf)
 
-Dynamic expressions in Terraform allow you to generate values or configurations based on runtime conditions or variables.
+### Splat Expression
+
+A [splat Expression](https://developer.hashicorp.com/terraform/language/expressions/splat) in Terraform is a convenient way to access multiple attributes or elements from a data structure, such as a list, set, or map, within your configuration. It allows you to extract specific values from a collection and use them elsewhere in your code.
+
+Splat expressions use the [*] notation and can be applied to resource attributes, module outputs, or data source results, much in the same way as `for` expressions:
+
+```t
+# With for expression
+[for o in var.list : o.id]
+
+# With Splat Expression [*]
+var.list[*].id
+```
+
+- See [for_and_splat.tf](./Expressions/for_and_splat.tf)
 
 ### Dynamic Blocks
 
@@ -200,7 +214,49 @@ dynamic "subnet" {
 
 In this example, the `for_each` argument iterates over a map variable `var.subnets`, and for each entry in the map, it generates a dynamic block with custom configurations (setting the subnet "name" and "address_prefix").
 
-- See [dynamic.tf](./Functions/dynamic.tf)
+- See [dynamic.tf](./Expressions/dynamic.tf)
+
+There are numerous other expressions available in Terraform to cater to various configuration needs. For comprehensive details on these expressions, we recommend referring to the official [Terraform documentation](https://developer.hashicorp.com/terraform/language/expressions).
+
+## Functions
+
+Terraform includes a set of built-in functions for handling data within your configurations. These functions enable various operations and transformations on values. For a comprehensive overview of these functions, please refer to the [official documentation](https://developer.hashicorp.com/terraform/language/functions). Here, we'll explore the most commonly used functions.
+
+### Numeric Functions
+
+Numeric functions allow you to perform operations and transformations on numerical values within your configurations. These functions are useful for tasks like mathematical calculations, rounding, and working with numeric data. 
+
+**abs(number):** Returns the absolute value of a number.
+
+**ceil(number):** Rounds a number up to the nearest integer.
+
+**floor(number):** Rounds a number down to the nearest integer.
+
+- See [numeric.tf](./Functions/numeric.tf)
+
+### String Functions
+
+String functions enable you to manipulate and work with strings in your configuration files. They help you format, modify, and extract information from text-based data.
+
+**lower(string):** Converts a string to lowercase.
+
+**upper(string):** Converts a string to uppercase.
+
+**format(format, ...args):** Formats a string according to a specified format.
+
+- See [string.tf](./Functions/string.tf)
+
+### Collection Functions
+
+Collection functions deal with lists, sets, and maps, allowing you to manage and manipulate data collections effectively. These functions help you perform operations like merging lists, filtering elements, and finding distinct values.
+
+**concat(list1, list2):** Concatenates two lists.
+
+**distinct(list):** Removes duplicate elements from a list.
+
+**length(list):** Returns the length of a list.
+
+- See [collection.tf](./Functions/collection.tf)
 
 ## Data Sources
 
