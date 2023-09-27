@@ -1,8 +1,6 @@
 # 01 - Terraform Basics
 
-Terraform is an open-source infrastructure as code (IaC) tool developed by HashiCorp. It allows you to define and provision infrastructure using a declarative configuration language.
-
-Terraform is designed to be cloud-agnostic, which means you can use it to manage resources on various cloud providers, such as AWS, Azure, Google Cloud, and more. With Terraform, you can define your infrastructure in code, making it reproducible, version-controlled, and easily manageable.
+Terraform is an open-source infrastructure as code (IaC) tool developed by HashiCorp. It is designed to be cloud-agnostic, which means you can use it to manage resources on various cloud providers, such as AWS, Azure, Google Cloud, and more. With Terraform, you can define your infrastructure in code, making it reproducible, version-controlled, and easily manageable.
 
 ## Terraform HashiCorp Configuration Language (HCL)
 
