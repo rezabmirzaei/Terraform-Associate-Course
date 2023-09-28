@@ -1,7 +1,8 @@
 locals {
-  name = "Reza"
-  age  = 46
-  text = "HELLO world"
+  name         = "Reza"
+  age          = 46
+  new_line_str = "Hello\n"
+  text         = "HELLO world"
 }
 
 output "lowercase_text" {
@@ -10,6 +11,10 @@ output "lowercase_text" {
 
 output "uppercase_text" {
   value = upper(local.text) # Returns "HELLO WORLD"
+}
+
+output "chomed_string" {
+  value = chomp(local.new_line_str) # Returns "Hello"
 }
 
 # Notice string interpolation

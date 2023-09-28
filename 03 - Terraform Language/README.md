@@ -226,6 +226,10 @@ Terraform includes a set of built-in functions for handling data within your con
 
 Numeric functions allow you to perform operations and transformations on numerical values within your configurations. These functions are useful for tasks like mathematical calculations, rounding, and working with numeric data. 
 
+**min(...numbers):** Takes one or more numbers and returns the smallest number from the set.
+
+**max(...numbers):** Takes one or more numbers and returns the greatest number from the set.
+
 **abs(number):** Returns the absolute value of a number.
 
 **ceil(number):** Rounds a number up to the nearest integer.
@@ -241,6 +245,8 @@ String functions enable you to manipulate and work with strings in your configur
 **lower(string):** Converts a string to lowercase.
 
 **upper(string):** Converts a string to uppercase.
+
+**chomp(string):** Removes newline characters at the end of a string.
 
 **format(format, ...args):** Formats a string according to a specified format.
 

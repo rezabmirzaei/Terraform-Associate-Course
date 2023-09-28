@@ -4,6 +4,14 @@ locals {
   f_num = 5.8
 }
 
+output "min_num" {
+  value = min(local.n_num, local.c_num, local.f_num) # Returns -5
+}
+
+output "max_num" {
+  value = max(local.n_num, local.c_num, local.f_num) # Returns 5.8
+}
+
 output "abs_num" {
   value = abs(local.n_num) # Returns 5
 }
