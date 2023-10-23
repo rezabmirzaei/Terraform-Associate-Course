@@ -1,6 +1,6 @@
 # This is the Terraform configuration block that defines the required providers.
 # It specifies that the "azurerm" provider is required, and it should be sourced
-# from the "hashicorp/azurerm" namespace with a version constraint of at least 3.0.2.
+# from the "hashicorp/azurerm" namespace with a version constraint of at least 3.74.0.
 terraform {
   required_providers {
     azurerm = {
@@ -8,8 +8,7 @@ terraform {
       version = "~> 3.74.0"
     }
   }
-
-  # This sets the minimum required Terraform version to 1.1.0 for this configuration
+  # This sets the minimum required Terraform version to 1.5.6 for this configuration
   required_version = ">= 1.5.6"
 }
 
