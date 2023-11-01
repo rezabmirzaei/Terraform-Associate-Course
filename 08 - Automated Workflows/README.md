@@ -1,6 +1,6 @@
 # 08 - Automated Workflows
 
-An essential aspect of modern infrastructure management is automated workflows. In this chapter, we'll explore three key components that streamline the deployment and management of your Terraform projects.
+An essential aspect of modern infrastructure management is automated workflows. In the following, we'll explore three key components that streamline the deployment and management of your Terraform projects.
 
 ## GitHub Actions
 
