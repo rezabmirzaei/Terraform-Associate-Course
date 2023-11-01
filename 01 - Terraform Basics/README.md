@@ -84,7 +84,7 @@ Installation instructions may vary depending on your operating system. Go to [Te
 
 **Configuring Authentication for Azure:**
 
-To interact with Azure, you need to set up authentication. This typically involves [creating a service principal](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1):
+To interact with Azure, you need to set up authentication. This typically involves [creating a service principal](https://learn.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli):
 
 - Open a terminal and type:
   - ``az login``
@@ -114,7 +114,7 @@ The __<SPN_CLIENT_SECRET_VALUE>__ is the __password__ generated for the service 
 
 Read more on [Authenticate Terraform to Azure](https://learn.microsoft.com/en-us/azure/developer/terraform/authenticate-to-azure?tabs=bash).
 
-## Basic Commands: init, plan, apply, destroy
+## DEMO - Basic Commands: init, plan, apply, destroy
 
 Let's walk through a basic example to demonstrate Terraform's core commands using the [following configuration (main.tf)](./main.tf). We will cover the different concepts of the workflow in more depth as we proceed through the course. **Copy the provided configuration file to a folder on your own computer, or fork/clone this project.**
 
@@ -137,7 +137,7 @@ Assuming you have followed the setup as descibed so far (including authenticatio
   - To destroy the resources, run `terraform destroy`.
   - Review and confirm the destruction (log into Azure and make sure it's all gone).
 
-## Additional Commands: validate, fmt
+## DEMO - Additional Commands: validate, fmt
 
 - **Validation ([terraform validate](https://developer.hashicorp.com/terraform/cli/commands/validate)):**
   - Edit the [main.tf](./main.tf) file and make it invalid, e.g. by removing the required property `name` from the `resource` block.

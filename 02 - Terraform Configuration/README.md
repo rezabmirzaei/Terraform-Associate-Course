@@ -27,7 +27,7 @@ Terraform Configuration files are the blueprint of your infrastructure, providin
 
 Mastering Terraform Configuration is pivotal to proficiently architecting and managing infrastructure using Terraform. These configuration files serve as your foundation in the world of Infrastructure as Code with Terraform. They allow you to define, tailor, and sustain your infrastructure resources with precision and consistency.
 
-## Configuration files and variables
+## DEMO - Configuration files and variables
 
 Let's walk through a simple example to demonstrate Terraform's configuration files, with a special focus on how variables are handled. We will use the [following configuration (main.tf)](./main.tf), supported by [variables.tf](./variables.tf), and a provided [outputs.tf](./outputs.tf).
 

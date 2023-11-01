@@ -2,7 +2,7 @@
 
 Terraform uses a declarative language called [HashiCorp Configuration Language (HCL)](https://developer.hashicorp.com/terraform/language/syntax/configuration) for provisioning and configuring resources in a cloud or on-premises environment. It supports a wide range of concepts that enable you to efficiently manage your infrastructure such as core configuration blocks for version compatibility, provider settings and connection configuration, resource management, variables, outputs, modularization through modules, secrets handling and much more.
 
-## Core Configuration Blocks
+## Core Configuration
 
 Let's explore the core configuration blocks of Terraform, used to define how your infrastructure should be provisioned and managed. See [main.tf](./main.tf) for examples of these concepts.
 
