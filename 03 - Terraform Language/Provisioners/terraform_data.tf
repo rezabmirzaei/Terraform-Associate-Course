@@ -1,4 +1,3 @@
-# Simplest example I can conceive
 # This resource will be used to trigger a local-exec provisioner, without any relation or dependency to any other resource
 resource "terraform_data" "greeting_data" {
   provisioner "local-exec" {
