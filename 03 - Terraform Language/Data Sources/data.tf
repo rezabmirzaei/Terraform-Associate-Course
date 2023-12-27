@@ -11,6 +11,7 @@ resource "azurerm_virtual_network" "vnet_data" {
 }
 
 # Data source to retrieve resources with specific tags
+# Only resources tagged with "environment:Dev" and "role:Webserver"
 data "azurerm_resources" "dev_web_data" {
   resource_group_name = "rg-terraform-data"
   required_tags = {
